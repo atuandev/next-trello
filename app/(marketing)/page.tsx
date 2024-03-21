@@ -27,7 +27,7 @@ export default function MarketingPage() {
           <Medal className='size-6' />
           No 1 task management
         </div>
-        <h1 className='text-3xl md:text-6xl text-center text-neutral-800'>
+        <h1 className='text-3xl md:text-6xl text-center text-neutral-800 dark:text-slateForeground'>
           Taskify helps team move
         </h1>
         <div className='text-3xl md:text-6xl bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white p-4 mt-2 rounded-md w-fit'>
