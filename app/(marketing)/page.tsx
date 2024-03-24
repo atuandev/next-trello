@@ -23,7 +23,7 @@ export default function MarketingPage() {
           headingFont.className
         )}
       >
-        <div className='flex items-center gap-2 border p-4 shadow-sm font-semi bg-amber-100 text-amber-700 rounded-full uppercase'>
+        <div className='flex items-center gap-2 border p-4 shadow-sm bg-amber-100 text-amber-700 rounded-full uppercase'>
           <Medal className='size-6' />
           No 1 task management
         </div>
