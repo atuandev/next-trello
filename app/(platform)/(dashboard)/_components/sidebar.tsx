@@ -27,11 +27,9 @@ export function Sidebar({ storageKey = 't-sidebar-state' }: SidebarProps) {
     }
   })
 
-  console.log(userMemberships)
-
   const defaultAccordionValue: string[] = Object.keys(expanded).reduce(
     (acc: string[], key: string) => {
-      if (expanded[key]) {
+      if (expanded[key] === true) {
         acc.push(key)
       }
       return acc
@@ -49,7 +47,7 @@ export function Sidebar({ storageKey = 't-sidebar-state' }: SidebarProps) {
   if (!isLoadedOrg || !isLoadedList || userMemberships.isLoading) {
     return (
       <>
-        <Skeleton />
+        <Skeleton className='h-8 w-full' />
       </>
     )
   }

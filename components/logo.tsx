@@ -20,7 +20,7 @@ export function Logo() {
         />
         <p
           className={cn(
-            'text-lg text-neutral-700 dark:text-white pt-1',
+            'text-lg text-neutralForeground pt-1',
             headingFont.className
           )}
         >

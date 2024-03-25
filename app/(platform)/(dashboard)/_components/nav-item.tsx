@@ -60,8 +60,10 @@ export function NavItem({ isExpanded, isActive, org, onExpand }: NavItemProps) {
       <AccordionTrigger
         onClick={() => onExpand(org.id)}
         className={cn(
-          'flex items-center gap-x-2 p-1.5 text-neutral-700 rounded-md hover:bg-neutral-500/10 transition text-start no-underline hover:no-underline',
-          isActive && !isExpanded && 'bg-sky-500/10 text-sky-700'
+          'flex items-center gap-x-2 p-1.5 text-neutralForeground rounded-md hover:bg-neutral-500/10 transition text-start no-underline hover:no-underline',
+          isActive &&
+            !isExpanded &&
+            'bg-sky-500/10 text-sky-700 dark:text-sky-500 dark:bg-sky-500/20'
         )}
       >
         <div className='flex items-center gap-x-2'>
@@ -70,14 +72,14 @@ export function NavItem({ isExpanded, isActive, org, onExpand }: NavItemProps) {
               src={org.imageUrl}
               alt='Organization'
               className='rounded-sm object-cover'
-              sizes='40px'
+              sizes='28px'
               fill
             />
           </div>
           <span className='font-medium text-sm'>{org.name}</span>
         </div>
       </AccordionTrigger>
-      <AccordionContent className='pt-1 text-neutral-700'>
+      <AccordionContent className='pt-1 text-neutralForeground dark:bg-slate-900/30 rounded-md'>
         {routes.map(route => (
           <Button
             key={route.href}
@@ -85,7 +87,8 @@ export function NavItem({ isExpanded, isActive, org, onExpand }: NavItemProps) {
             onClick={() => onClick(route.href)}
             className={cn(
               'w-full font-normal justify-start pl-10 mb-1',
-              pathname === route.href && 'bg-sky-500/10 text-sky-700'
+              pathname === route.href &&
+                'bg-sky-500/10 text-sky-700 dark:text-sky-500 dark:bg-sky-500/20'
             )}
             variant='ghost'
           >

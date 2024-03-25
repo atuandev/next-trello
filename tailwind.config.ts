@@ -24,6 +24,7 @@ const config = {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        neutralForeground: 'hsl(var(--neutral-foreground))',
         slateBackground: 'hsl(var(--slate-background))',
         slateForeground: 'hsl(var(--slate-foreground))',
         primary: {

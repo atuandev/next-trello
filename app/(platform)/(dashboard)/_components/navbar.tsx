@@ -42,8 +42,8 @@ export function Navbar() {
         <OrganizationSwitcher
           hidePersonal
           afterCreateOrganizationUrl='/organizations/:id'
-          afterLeaveOrganizationUrl='/select-org'
           afterSelectOrganizationUrl='/organizations/:id'
+          afterLeaveOrganizationUrl='/select-org'
           appearance={{
             elements: {
               rootBox: {
