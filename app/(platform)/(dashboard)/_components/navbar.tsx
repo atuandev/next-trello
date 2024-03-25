@@ -1,10 +1,11 @@
 'use client'
 
+import { OrganizationSwitcher, UserButton } from '@clerk/nextjs'
+import { Plus } from 'lucide-react'
+
 import { Logo } from '@/components/logo'
 import { ModeToggle } from '@/components/mode-toggle'
 import { Button } from '@/components/ui/button'
-import { OrganizationSwitcher, UserButton } from '@clerk/nextjs'
-import { Plus } from 'lucide-react'
 import MobileSidebar from './mobile-sidebar'
 
 export function Navbar() {
