@@ -46,11 +46,8 @@ export function Navbar() {
           afterLeaveOrganizationUrl='/select-org'
           appearance={{
             elements: {
-              rootBox: {
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }
+              rootBox: 'flex justify-center items-center',
+              organizationSwitcherPopoverCard: 'dark:bg-[#0f172a]',
             }
           }}
         />
@@ -58,10 +55,8 @@ export function Navbar() {
           afterSignOutUrl='/'
           appearance={{
             elements: {
-              rootBox: {
-                width: 30,
-                height: 30
-              }
+              rootBox: 'size-[30px]',
+              userButtonPopoverCard: 'dark:bg-[#0f172a]',
             }
           }}
         />
