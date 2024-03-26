@@ -1,10 +1,13 @@
 'use client'
 
-import { createBoard } from '@/actions/create-board'
 import { useAction } from '@/hooks/use-action'
+import { createBoard } from '@/actions/create-board'
+
+import { FormInput } from '@/components/form/form-input'
+import { FormSubmit } from '@/components/form/form-submit'
 
 export default function OrganizationPage() {
-  const { execute } = useAction(createBoard, {
+  const { execute, fieldErrors, isLoading } = useAction(createBoard, {
     onSuccess: data => {
       console.log(data)
     },
@@ -21,8 +24,13 @@ export default function OrganizationPage() {
   return (
     <div>
       <form action={onSubmit}>
-        <input type='text' name='title' className='border' />
-        <button type='submit'>Create</button>
+        <FormInput
+          id='title'
+          label='Title'
+          errors={fieldErrors}
+          disabled={isLoading}
+        />
+        <FormSubmit>Save</FormSubmit>
       </form>
     </div>
   )
