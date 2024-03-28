@@ -15,6 +15,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { FormInput } from './form-input'
 import { FormSubmit } from './form-submit'
+import { FormPicker } from './form-picker'
 
 interface FormPopoverProps {
   children: React.ReactNode
@@ -48,7 +49,10 @@ export const FormPopover = ({
 
   const onSubmit = (formData: FormData) => {
     const title = formData.get('title') as string
-    execute({ title })
+    const image = formData.get('image') as string
+
+    console.log({ image })
+    // execute({ title })
   }
 
   return (
@@ -73,7 +77,8 @@ export const FormPopover = ({
         </PopoverClose>
         <form className='space-y-4' action={onSubmit}>
           <div className='space-y-4'>
-            <FormInput id='title' label='Title' errors={fieldErrors} />
+            <FormPicker id='image' errors={fieldErrors} />
+            <FormInput id='title' label='Board title' errors={fieldErrors} />
           </div>
           <FormSubmit className='w-full'>Create</FormSubmit>
         </form>
