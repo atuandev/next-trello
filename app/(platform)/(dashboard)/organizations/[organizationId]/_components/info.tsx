@@ -5,7 +5,7 @@ import { useOrganization } from '@clerk/nextjs'
 import { CreditCard } from 'lucide-react'
 import { Skeleton } from '@/components/ui/skeleton'
 
-export default function Info() {
+export function Info() {
   const { organization, isLoaded } = useOrganization()
 
   if (!isLoaded) {
