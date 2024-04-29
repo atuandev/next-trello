@@ -10,7 +10,7 @@ import { Menu } from 'lucide-react'
 import { Sidebar } from './sidebar'
 import { ModeToggle } from '@/components/mode-toggle'
 
-export default function MobileSidebar() {
+export function MobileSidebar() {
   const pathname = usePathname()
   const [isMounted, setIsMounted] = useState(false)
 

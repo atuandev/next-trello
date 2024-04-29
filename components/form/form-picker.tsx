@@ -26,18 +26,17 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        throw new Error('Fail to load images from Unsplash')
         const result = await unsplash.photos.getRandom({
           collectionIds: ['317099'],
           count: 9
         })
 
-        if (result && result.response) {
-          const newImages = result.response as Array<Record<string, any>>
-          setImages(newImages)
-        } else {
+        if (!result || !result.response) {
           console.error('Fail to load images from Unsplash')
         }
+
+        const newImages = result.response as Array<Record<string, any>>
+        setImages(newImages)
       } catch (error) {
         console.error(error)
         setImages(defaultImages)
@@ -102,7 +101,7 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
           </div>
         ))}
       </div>
-      <FormErrors id='image' errors={errors}/>
+      <FormErrors id='image' errors={errors} />
     </div>
   )
 }

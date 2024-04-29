@@ -10,7 +10,7 @@ export function Navbar() {
         <Logo />
         <div className='md:space-x-4 md:w-auto flex items-center justify-between w-full'>
           <ModeToggle />
-          <div className='space-x-4'>
+          <div className='space-x-2'>
             <Button size='sm' variant='outline' asChild>
               <Link href='/sign-in'>Login</Link>
             </Button>
