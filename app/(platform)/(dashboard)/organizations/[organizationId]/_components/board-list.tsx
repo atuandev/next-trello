@@ -4,9 +4,9 @@ import { Hint } from '@/components/hint'
 import { FormPopover } from '@/components/form/form-popover'
 import { auth } from '@clerk/nextjs'
 import { redirect } from 'next/navigation'
-import { db } from '@/lib/db'
 import Link from 'next/link'
 import { Skeleton } from '@/components/ui/skeleton'
+import { getAllBoards } from '@/data/board'
 
 export async function BoardList() {
   const { orgId } = auth()
@@ -15,14 +15,7 @@ export async function BoardList() {
     return redirect('/select-org')
   }
 
-  const boards = await db.board.findMany({
-    where: {
-      orgId
-    },
-    orderBy: {
-      createdAt: 'desc'
-    }
-  })
+  const boards = await getAllBoards(orgId)
 
   return (
     <div className='space-y-4'>

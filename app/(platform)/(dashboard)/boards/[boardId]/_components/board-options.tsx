@@ -35,7 +35,7 @@ export function BoardOptions({ id }: BoardOptionsProps) {
 
   return (
     <Popover>
-      <PopoverTrigger>
+      <PopoverTrigger asChild>
         <Button variant='transparent' className='size-auto p-2'>
           <MoreHorizontal className='size-4' />
         </Button>
@@ -44,7 +44,7 @@ export function BoardOptions({ id }: BoardOptionsProps) {
         <div className='text-sm font-medium text-center text-neutralForeground pb-4'>
           Board action
         </div>
-        <PopoverClose>
+        <PopoverClose asChild>
           <Button
             variant='ghost'
             className='size-auto p-2 absolute top-2 right-2 text-neutralForeground'
@@ -53,7 +53,7 @@ export function BoardOptions({ id }: BoardOptionsProps) {
           </Button>
         </PopoverClose>
         <AlertDialog open={open} onOpenChange={setOpen}>
-          <AlertDialogTrigger className='w-full'>
+          <AlertDialogTrigger className='w-full' asChild>
             <Button
               variant='ghost'
               disabled={isLoading}
@@ -62,12 +62,12 @@ export function BoardOptions({ id }: BoardOptionsProps) {
               <Trash className='size-4 mr-2' />
               Delete this board
             </Button>
-            <AlertDialogDeleteBoard
-              onDeleteBoard={onDeleteBoard}
-              setOpen={setOpen}
-              isLoading={isLoading}
-            />
           </AlertDialogTrigger>
+          <AlertDialogDeleteBoard
+            onDeleteBoard={onDeleteBoard}
+            setOpen={setOpen}
+            isLoading={isLoading}
+          />
         </AlertDialog>
       </PopoverContent>
     </Popover>
