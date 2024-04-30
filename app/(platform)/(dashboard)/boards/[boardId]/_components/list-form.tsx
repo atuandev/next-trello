@@ -38,7 +38,7 @@ export function ListForm() {
 
   const { execute, fieldErrors } = useAction(createList, {
     onSuccess: data => {
-      toast.success(`List "${data.title}" created!`)
+      toast.success(`List "${data.title}" created`)
       disableEditing()
       router.refresh()
     },
@@ -63,7 +63,7 @@ export function ListForm() {
         <form
           action={onSubmit}
           ref={formRef}
-          className='w-full p-3 bg-background/80 space-y-4 shadow-md rounded-md'
+          className='w-full p-3 bg-background/70 space-y-4 shadow-md rounded-md'
         >
           <FormInput
             id='title'
@@ -92,7 +92,7 @@ export function ListForm() {
     <ListWrapper>
       <button
         onClick={enableEditing}
-        className='w-full rounded-md bg-background/80 hover:bg-background/50 transition p-3 flex items-center font-semibold text-sm'
+        className='w-full rounded-md bg-background/70 hover:bg-background/50 transition p-3 flex items-center font-semibold text-sm'
       >
         <Plus className='size-4 mr-2' />
         Add a list

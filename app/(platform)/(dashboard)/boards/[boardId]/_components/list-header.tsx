@@ -34,7 +34,7 @@ export function ListHeader({ list }: ListHeaderProps) {
 
   const { execute, fieldErrors } = useAction(updateList, {
     onSuccess: data => {
-      toast.success(`Renamed to "${data.title}"!`)
+      toast.success(`Renamed to "${data.title}"`)
       setTitle(data.title)
       disableEditing()
     },
