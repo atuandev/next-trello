@@ -12,7 +12,7 @@ import { createList } from '@/actions/create-list'
 import { useAction } from '@/hooks/use-action'
 import { toast } from 'sonner'
 
-export default function ListForm() {
+export function ListForm() {
   const router = useRouter()
   const params = useParams()
 
@@ -23,7 +23,7 @@ export default function ListForm() {
 
   const enableEditing = () => {
     setIsEditing(true)
-    setTimeout(() => inputRef.current?.focus(), 0)
+    setTimeout(() => inputRef.current?.focus())
   }
 
   const disableEditing = () => {
@@ -63,7 +63,7 @@ export default function ListForm() {
         <form
           action={onSubmit}
           ref={formRef}
-          className='w-full p-3 bg-background space-y-4 shadow-md rounded-md'
+          className='w-full p-3 bg-background/80 space-y-4 shadow-md rounded-md'
         >
           <FormInput
             id='title'
@@ -75,7 +75,11 @@ export default function ListForm() {
           <input hidden value={params.boardId} name='boardId' />
           <div className='flex items-center gap-x-1'>
             <FormSubmit>Add list</FormSubmit>
-            <Button onClick={disableEditing} variant='ghost' size='sm'>
+            <Button
+              onClick={disableEditing}
+              variant='ghost'
+              size='sm'
+            >
               <X className='size-4' />
             </Button>
           </div>
