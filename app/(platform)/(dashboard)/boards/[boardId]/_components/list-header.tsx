@@ -4,10 +4,9 @@ import { updateList } from '@/actions/update-list'
 import { FormInput } from '@/components/form/form-input'
 import { useAction } from '@/hooks/use-action'
 import { ListWithCards } from '@/types'
-import { useRouter } from 'next/navigation'
 import { useRef, useState } from 'react'
 import { toast } from 'sonner'
-import { useEventListener, useOnClickOutside } from 'usehooks-ts'
+import { useEventListener } from 'usehooks-ts'
 
 interface ListHeaderProps {
   list: ListWithCards
@@ -69,8 +68,14 @@ export function ListHeader({ list }: ListHeaderProps) {
     <div className='pt-2 px-2 text-sm font-semibold flex justify-between items-start gap-x-2'>
       {isEditing ? (
         <form ref={formRef} action={onSubmit} className='flex-1 px-[2px]'>
-          <input hidden name='id' id='id' value={list.id} readOnly/>
-          <input hidden name='boardId' id='boardId' value={list.boardId} readOnly/>
+          <input hidden name='id' id='id' value={list.id} readOnly />
+          <input
+            hidden
+            name='boardId'
+            id='boardId'
+            value={list.boardId}
+            readOnly
+          />
           <FormInput
             id='title'
             ref={inputRef}
@@ -85,7 +90,7 @@ export function ListHeader({ list }: ListHeaderProps) {
       ) : (
         <div
           onClick={enableEditing}
-          className='w-full text-sm px-2.5 py-1 h-7 font-medium border-transparent'
+          className='w-full text-sm px-2.5 py-1 h-7 font-medium border-transparent truncate'
         >
           {title}
         </div>

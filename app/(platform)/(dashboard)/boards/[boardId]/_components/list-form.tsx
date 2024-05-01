@@ -1,16 +1,17 @@
 'use client'
 
 import { Plus, X } from 'lucide-react'
-import { ListWrapper } from './list-wrapper'
-import { useRef, useState } from 'react'
-import { useEventListener, useOnClickOutside } from 'usehooks-ts'
-import { FormInput } from '@/components/form/form-input'
 import { useParams, useRouter } from 'next/navigation'
+import { useRef, useState } from 'react'
+import { toast } from 'sonner'
+import { useEventListener, useOnClickOutside } from 'usehooks-ts'
+
+import { createList } from '@/actions/create-list'
+import { FormInput } from '@/components/form/form-input'
 import { FormSubmit } from '@/components/form/form-submit'
 import { Button } from '@/components/ui/button'
-import { createList } from '@/actions/create-list'
 import { useAction } from '@/hooks/use-action'
-import { toast } from 'sonner'
+import { ListWrapper } from './list-wrapper'
 
 export function ListForm() {
   const router = useRouter()
@@ -72,14 +73,10 @@ export function ListForm() {
             errors={fieldErrors}
             className='text-sm px-2 py-1 h-7 font-medium border-transparent hover:border-input focus:border-input transition'
           />
-          <input hidden value={params.boardId} name='boardId' />
+          <input hidden value={params.boardId} name='boardId' readOnly />
           <div className='flex items-center gap-x-1'>
             <FormSubmit>Add list</FormSubmit>
-            <Button
-              onClick={disableEditing}
-              variant='ghost'
-              size='sm'
-            >
+            <Button onClick={disableEditing} variant='ghost' size='sm'>
               <X className='size-4' />
             </Button>
           </div>
@@ -92,7 +89,7 @@ export function ListForm() {
     <ListWrapper>
       <button
         onClick={enableEditing}
-        className='w-full rounded-md bg-background/70 hover:bg-background/50 transition p-3 flex items-center font-semibold text-sm'
+        className='w-full rounded-md bg-background/60 hover:bg-background/50 transition p-3 flex items-center font-semibold text-sm'
       >
         <Plus className='size-4 mr-2' />
         Add a list

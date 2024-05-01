@@ -60,15 +60,17 @@ export function BoardTitleForm({ board }: BoardTitleFormProps) {
 
   if (isEditing) {
     return (
-      <form action={onSubmit} ref={formRef}>
-        <FormInput
-          id='title'
-          ref={inputRef}
-          onBlur={onBlur}
-          defaultValue={title}
-          className='text-lg font-bold bg-transparent px-2 py-1 h-7 focus-visible:outline-none focus-visible:ring-transparent border-none'
-        />
-      </form>
+      <div>
+        <form action={onSubmit} ref={formRef}>
+          <FormInput
+            id='title'
+            ref={inputRef}
+            onBlur={onBlur}
+            defaultValue={title}
+            className='text-lg font-bold bg-transparent px-1.5 py-1 h-7  focus-visible:outline-none focus-visible:ring-transparent sm:border-none'
+          />
+        </form>
+      </div>
     )
   }
 

@@ -11,7 +11,7 @@ interface ListItemProps {
 export function ListItem({ index, list }: ListItemProps) {
   return (
     <li className='shrink-0 h-full w-[272px] select-none'>
-      <div className='w-full rounded-md bg-[#f1f2f4]/90 dark:bg-slate-900/90 p-2 shadow-md'>
+      <div className='w-full rounded-md bg-[#f1f2f4]/90 dark:bg-slate-950/90 p-2 shadow-md'>
         <ListHeader list={list} />
       </div>
     </li>

@@ -37,7 +37,7 @@ export function BoardOptions({ id }: BoardOptionsProps) {
     <Popover>
       <PopoverTrigger asChild>
         <Button variant='transparent' className='size-auto p-2'>
-          <MoreHorizontal className='size-4' />
+          <MoreHorizontal className='size-5' />
         </Button>
       </PopoverTrigger>
       <PopoverContent className='px-0 py-3' side='bottom' align='start'>
@@ -57,7 +57,7 @@ export function BoardOptions({ id }: BoardOptionsProps) {
             <Button
               variant='ghost'
               disabled={isLoading}
-              className='rounded-none w-full h-auto justify-start p-2 px-5 text-sm font-normal active:scale-100'
+              className='rounded-none w-full h-auto justify-start p-2 px-5 text-sm font-normal active:scale-100 text-rose-600 hover:text-rose-500'
             >
               <Trash className='size-4 mr-2' />
               Delete this board
