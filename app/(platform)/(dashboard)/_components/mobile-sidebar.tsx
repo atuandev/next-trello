@@ -9,7 +9,6 @@ import { useMobileSidebar } from '@/hooks/use-mobile-sidebar'
 import { Menu } from 'lucide-react'
 import { Sidebar } from './sidebar'
 import { ModeToggle } from '@/components/mode-toggle'
-import { Logo } from '@/components/logo'
 import Image from 'next/image'
 import Link from 'next/link'
 

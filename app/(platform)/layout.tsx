@@ -7,7 +7,7 @@ export default function PlatformLayout({
 }) {
   return (
     <>
-      <Toaster />
+      <Toaster richColors />
       {children}
     </>
   )
