@@ -1,5 +1,3 @@
-'use client'
-
 import { Toaster } from '@/components/ui/sonner'
 
 export default function PlatformLayout({
@@ -7,7 +5,6 @@ export default function PlatformLayout({
 }: {
   children: React.ReactNode
 }) {
-
   return (
     <>
       <Toaster />
