@@ -30,7 +30,7 @@ export async function BoardList() {
             key={board.id}
             href={`/boards/${board.id}`}
             style={{ backgroundImage: `url(${board.imageThumbUrl})` }}
-            className='relative group aspect-video bg-no-repeat bg-center bg-cover bg-sky-700 rounded-sm size-full p-2 overflow-hidden'
+            className='relative group aspect-video bg-no-repeat bg-center bg-cover bg-sky-700 rounded-sm size-full p-2 overflow-hidden dark:outline dark:outline-slate-600/50 dark:outline-1'
           >
             <div className='absolute inset-0 bg-black/30 group-hover:bg-black/40 transition' />
             <p className='relative text-white font-semibold'>{board.title}</p>
