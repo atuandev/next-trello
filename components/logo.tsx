@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const headingFont = localFont({
-  src: '../public/fonts/font.woff2'
+  src: '../public/fonts/ProtestRiot-Regular.ttf'
 })
 
 export function Logo() {
@@ -24,7 +24,7 @@ export function Logo() {
             headingFont.className
           )}
         >
-          Taskify
+          WorkFlow
         </p>
       </div>
     </Link>

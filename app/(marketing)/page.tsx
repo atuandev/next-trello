@@ -1,12 +1,16 @@
-import {Button} from '@/components/ui/button'
-import {Medal} from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Medal } from 'lucide-react'
 import Link from 'next/link'
 import localFont from 'next/font/local'
-import {cn} from '@/lib/utils'
-import {Poppins} from 'next/font/google'
+import { cn } from '@/lib/utils'
+import { Poppins } from 'next/font/google'
 
 const headingFont = localFont({
   src: '../../public/fonts/font.woff2'
+})
+
+const logoFont = localFont({
+  src: '../../public/fonts/ProtestRiot-Regular.ttf'
 })
 
 const textFont = Poppins({
@@ -23,17 +27,15 @@ export default function MarketingPage() {
           headingFont.className
         )}
       >
-        <div
-          className='flex items-center gap-2 border p-4 shadow-sm bg-amber-100 text-amber-700 rounded-full uppercase'>
-          <Medal className='size-6'/>
+        <div className='flex items-center gap-2 border p-4 pb-3.5 shadow-sm bg-amber-100 text-amber-700 rounded-full uppercase'>
+          <Medal className='size-5' />
           No 1 task management
         </div>
         <h1 className='text-3xl md:text-6xl text-center text-neutral-800 dark:text-slateForeground'>
-          Taskify helps team move
+          <span className={logoFont.className}>WorkFlow</span> helps team move
         </h1>
-        <div
-          className='text-3xl md:text-6xl bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white p-4 mt-2 rounded-md w-fit'>
-          work foward.
+        <div className='text-3xl md:text-6xl bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white p-4 mt-2 rounded-md w-fit'>
+          work forward.
         </div>
       </div>
 
@@ -45,11 +47,11 @@ export default function MarketingPage() {
       >
         Collaborate, manage projects, and reach new productivity peaks. From
         high rises to the home office, the way your team works is unique —
-        accomplish it all with Taskify.
+        accomplish it all with WorkFlow.
       </div>
 
       <Button className='mt-6' size='lg' asChild>
-        <Link href='/sign-up'>Get Taskify for free</Link>
+        <Link href='/sign-up'>Get WorkFlow for free</Link>
       </Button>
     </div>
   )
