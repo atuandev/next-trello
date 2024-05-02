@@ -1,7 +1,6 @@
 'use client'
 
 import { forwardRef } from 'react'
-import { useFormStatus } from 'react-dom'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
@@ -20,7 +19,7 @@ type FormInputProps = {
   onBlur?: () => void
 }
 
-export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
+export const FormInputOptimistic = forwardRef<HTMLInputElement, FormInputProps>(
   (
     {
       id,
@@ -36,8 +35,6 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
     },
     ref
   ) => {
-    const { pending } = useFormStatus()
-
     return (
       <div className='space-y-2'>
         <div className='space-y-1'>
@@ -55,7 +52,7 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
             type={type}
             placeholder={placeholder}
             required={required}
-            disabled={disabled || pending}
+            disabled={disabled}
             ref={ref}
             className={cn('text-sm px-2 py-1 h-7', className)}
             defaultValue={defaultValue}
@@ -69,4 +66,4 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
   }
 )
 
-FormInput.displayName = 'FormInput'
+FormInputOptimistic.displayName = 'FormInputOptimistic'

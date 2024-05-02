@@ -1,9 +1,10 @@
 'use client'
 
 import { updateList } from '@/actions/update-list'
-import { FormInput } from '@/components/form/form-input'
+import { FormInputOptimistic } from '@/components/form/form-input-optismistic'
 import { useAction } from '@/hooks/use-action'
 import { ListWithCards } from '@/types'
+import { List } from '@prisma/client'
 import { useRef, useState } from 'react'
 import { toast } from 'sonner'
 import { useEventListener } from 'usehooks-ts'
@@ -32,7 +33,7 @@ export function ListHeader({ list }: ListHeaderProps) {
   }
 
   const { execute, fieldErrors } = useAction(updateList, {
-    onSuccess: data => {
+    onSuccess: (data: List) => {
       toast.success(`Renamed to "${data.title}"`)
       setTitle(data.title)
       disableEditing()
@@ -76,7 +77,7 @@ export function ListHeader({ list }: ListHeaderProps) {
             value={list.boardId}
             readOnly
           />
-          <FormInput
+          <FormInputOptimistic
             id='title'
             ref={inputRef}
             defaultValue={title}
@@ -90,7 +91,7 @@ export function ListHeader({ list }: ListHeaderProps) {
       ) : (
         <div
           onClick={enableEditing}
-          className='w-full text-sm px-2.5 py-1 h-7 font-medium border-transparent truncate'
+          className='w-full text-sm px-2.5 pb-1 pt-[4.5px] h-7 font-medium border-transparent truncate'
         >
           {title}
         </div>

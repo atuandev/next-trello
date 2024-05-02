@@ -7,19 +7,19 @@ import { useAction } from '@/hooks/use-action'
 import { Board } from '@prisma/client'
 
 import { updateBoard } from '@/actions/update-board'
-import { FormInput } from '@/components/form/form-input'
 import { Button } from '@/components/ui/button'
+import { FormInputOptimistic } from '@/components/form/form-input-optismistic'
 
 interface BoardTitleFormProps {
   board: Board
 }
 
 export function BoardTitleForm({ board }: BoardTitleFormProps) {
-  const [isEditing, setIsEditing] = useState(false)
-  const [title, setTitle] = useState(board.title)
-
   const formRef = useRef<HTMLFormElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+
+  const [isEditing, setIsEditing] = useState(false)
+  const [title, setTitle] = useState(board.title)
 
   const enableEditing = () => {
     setIsEditing(true)
@@ -35,7 +35,7 @@ export function BoardTitleForm({ board }: BoardTitleFormProps) {
 
   const { execute } = useAction(updateBoard, {
     onSuccess: data => {
-      toast.success(`Board "${data.title}" updated`)
+      toast.success(`Renamed to "${data.title}"`)
       setTitle(data.title)
       disableEditing()
     },
@@ -60,24 +60,22 @@ export function BoardTitleForm({ board }: BoardTitleFormProps) {
 
   if (isEditing) {
     return (
-      <div>
-        <form action={onSubmit} ref={formRef}>
-          <FormInput
-            id='title'
-            ref={inputRef}
-            onBlur={onBlur}
-            defaultValue={title}
-            className='text-lg font-bold bg-transparent px-1.5 py-1 h-7  focus-visible:outline-none focus-visible:ring-transparent sm:border-none'
-          />
-        </form>
-      </div>
+      <form action={onSubmit} ref={formRef}>
+        <FormInputOptimistic
+          id='title'
+          ref={inputRef}
+          onBlur={onBlur}
+          defaultValue={title}
+          className='text-lg font-bold bg-transparent px-2 py-1 h-7  focus-visible:outline-none focus-visible:ring-transparent sm:border-none'
+        />
+      </form>
     )
   }
 
   return (
     <Button
       variant='transparent'
-      className='font-bold text-lg size-auto py-1 px-2'
+      className='font-bold text-lg size-auto py-1 px-2 active:scale-100'
       onClick={enableEditing}
     >
       {title}
