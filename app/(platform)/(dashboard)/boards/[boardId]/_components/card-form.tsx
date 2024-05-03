@@ -11,21 +11,27 @@ import { createCard } from '@/actions/create-card'
 import { toast } from 'sonner'
 import { useParams } from 'next/navigation'
 import { useEventListener, useOnClickOutside } from 'usehooks-ts'
+import { Card } from '@prisma/client'
 
 interface CardFormProps {
   listId: string
   isEditing: boolean
   enableEditing: () => void
   disableEditing: () => void
+  setOptimisticCards: (cards: Card) => void
 }
 
 export const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(
-  ({ listId, isEditing, enableEditing, disableEditing }, ref) => {
+  (
+    { listId, isEditing, enableEditing, disableEditing, setOptimisticCards },
+    ref
+  ) => {
     const formRef = useRef<HTMLFormElement>(null)
     const params = useParams()
 
     const { execute, fieldErrors } = useAction(createCard, {
       onSuccess: data => {
+        disableEditing()
         toast.success(`Card "${data.title}" created`)
       },
       onError: error => {
@@ -37,8 +43,17 @@ export const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(
       const title = formData.get('title') as string
       const listId = formData.get('listId') as string
       const boardId = params.boardId as string
-      
-      disableEditing()
+
+      const newCard = {
+        id: Math.random().toString(36),
+        title,
+        description: '',
+        order: -1,
+        listId,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }
+      setOptimisticCards(newCard)
 
       execute({ title, listId, boardId })
     }
@@ -46,6 +61,7 @@ export const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(
     const onTextareaKeyDown: KeyboardEventHandler<HTMLTextAreaElement> = e => {
       if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault()
+        disableEditing()
         formRef.current?.requestSubmit()
       }
     }

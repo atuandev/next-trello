@@ -1,12 +1,13 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useOptimistic, useRef, useState } from 'react'
 
 import { cn } from '@/lib/utils'
 import { ListWithCards } from '@/types'
 import { ListHeader } from './list-header'
 import { CardForm } from './card-form'
 import { CardItem } from './card-item'
+import { Card } from '@prisma/client'
 
 interface ListItemProps {
   index: number
@@ -17,6 +18,10 @@ export function ListItem({ index, list }: ListItemProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   const [isEditing, setIsEditing] = useState(false)
+  const [optimisticCards, setOptimisticCards] = useOptimistic(
+    list.cards,
+    (state, newCards: Card) => [...state, newCards]
+  )
 
   const disableEditing = () => {
     setIsEditing(false)
@@ -39,7 +44,7 @@ export function ListItem({ index, list }: ListItemProps) {
             list.cards.length > 0 ? 'mt-2' : 'mt-0'
           )}
         >
-          {list.cards.map(card => (
+          {optimisticCards.map(card => (
             <CardItem card={card} index={index} key={card.id} />
           ))}
         </ol>
@@ -49,6 +54,7 @@ export function ListItem({ index, list }: ListItemProps) {
           isEditing={isEditing}
           enableEditing={enableEditing}
           disableEditing={disableEditing}
+          setOptimisticCards={setOptimisticCards}
         />
       </div>
     </li>
