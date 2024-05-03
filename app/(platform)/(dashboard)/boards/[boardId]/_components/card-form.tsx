@@ -80,7 +80,7 @@ export const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(
         <form
           ref={formRef}
           action={onSubmit}
-          className='m-1 py-0.5 px-1 space-y-4'
+          className='mt-2 py-0.5 px-1 space-y-4'
         >
           <FormTextarea
             id='title'
@@ -101,7 +101,7 @@ export const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(
     }
 
     return (
-      <div className='pt-2 px-2'>
+      <div className='pt-2 px-1'>
         <Button
           variant='ghost'
           onClick={enableEditing}

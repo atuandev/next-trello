@@ -1,6 +1,7 @@
 'use client'
 
 import { useOptimistic, useRef, useState } from 'react'
+import { Draggable, Droppable } from '@hello-pangea/dnd'
 
 import { cn } from '@/lib/utils'
 import { ListWithCards } from '@/types'
@@ -35,28 +36,46 @@ export function ListItem({ index, list }: ListItemProps) {
   }
 
   return (
-    <li className='shrink-0 h-full w-[272px] select-none'>
-      <div className='w-full rounded-md bg-[#f1f2f4]/90 dark:bg-slate-950/90 p-2 shadow-md'>
-        <ListHeader list={list} onAddCard={enableEditing} />
-        <ol
-          className={cn(
-            'm-1 py-0.5 px-1 flex flex-col gap-y-2',
-            list.cards.length > 0 ? 'mt-2' : 'mt-0'
-          )}
+    <Draggable draggableId={list.id} index={index}>
+      {provided => (
+        <li
+          {...provided.draggableProps}
+          ref={provided.innerRef}
+          className='shrink-0 h-full w-[272px] select-none'
         >
-          {optimisticCards.map(card => (
-            <CardItem card={card} index={index} key={card.id} />
-          ))}
-        </ol>
-        <CardForm
-          ref={textareaRef}
-          listId={list.id}
-          isEditing={isEditing}
-          enableEditing={enableEditing}
-          disableEditing={disableEditing}
-          setOptimisticCards={setOptimisticCards}
-        />
-      </div>
-    </li>
+          <div
+            {...provided.dragHandleProps}
+            className='w-full rounded-md bg-[#f1f2f4]/90 dark:bg-slate-950/90 p-2 shadow-md'
+          >
+            <ListHeader list={list} onAddCard={enableEditing} />
+            <Droppable droppableId={list.id} type='card'>
+              {provided => (
+                <ol
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                  className={cn(
+                    'py-0.5 px-1 flex flex-col gap-y-2 max-h-[calc(100vh-350px)] overflow-y-auto',
+                    list.cards.length > 0 ? 'mt-2' : 'mt-0'
+                  )}
+                >
+                  {optimisticCards.map((card, index) => (
+                    <CardItem card={card} index={index} key={card.id} />
+                  ))}
+                  {provided.placeholder}
+                </ol>
+              )}
+            </Droppable>
+            <CardForm
+              ref={textareaRef}
+              listId={list.id}
+              isEditing={isEditing}
+              enableEditing={enableEditing}
+              disableEditing={disableEditing}
+              setOptimisticCards={setOptimisticCards}
+            />
+          </div>
+        </li>
+      )}
+    </Draggable>
   )
 }
