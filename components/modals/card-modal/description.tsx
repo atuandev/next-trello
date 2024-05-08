@@ -53,6 +53,9 @@ export function Description({ card }: DescriptionProps) {
       queryClient.invalidateQueries({
         queryKey: ['card', card.id]
       })
+      queryClient.invalidateQueries({
+        queryKey: ['card-logs', card.id]
+      })
       toast.success(`Card ${data.title} updated`)
       disableEditing()
     },
@@ -101,7 +104,7 @@ export function Description({ card }: DescriptionProps) {
         ) : (
           <div
             onClick={enableEditing}
-            className='min-h-[78px] bg-neutral-200 dark:bg-slate-800 text-sm font-medium py-3 px-3.5 rounded-md'
+            className='min-h-[78px] bg-neutral-200 hover:bg-neutral-300 dark:bg-slate-800 hover:dark:bg-slate-700 text-sm font-medium py-3 px-3.5 rounded-md'
             role='button'
           >
             {card.description || 'Add a more detailed description...'}
