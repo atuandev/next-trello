@@ -8,7 +8,7 @@ import { Board } from '@prisma/client'
 
 import { updateBoard } from '@/actions/update-board'
 import { Button } from '@/components/ui/button'
-import { FormInputOptimistic } from '@/components/form/form-input-optismistic'
+import { FormInputOptimistic } from '@/components/form/form-input-optimistic'
 
 interface BoardTitleFormProps {
   board: Board

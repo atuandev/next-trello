@@ -1,7 +1,7 @@
 'use client'
 
 import { updateList } from '@/actions/update-list'
-import { FormInputOptimistic } from '@/components/form/form-input-optismistic'
+import { FormInputOptimistic } from '@/components/form/form-input-optimistic'
 import { useAction } from '@/hooks/use-action'
 import { ListWithCards } from '@/types'
 import { List } from '@prisma/client'

@@ -46,7 +46,6 @@ export default function ListContainer({ lists, boardId }: ListContainerProps) {
 
   const onDragEnd = (result: any) => {
     const { destination, source, type } = result
-    console.log('onDragEnd ~ result:', result);
 
     if (!destination) return
 
