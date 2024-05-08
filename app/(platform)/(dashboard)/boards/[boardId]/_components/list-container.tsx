@@ -7,10 +7,10 @@ import { toast } from 'sonner'
 import { ListWithCards } from '@/types'
 
 import { updateListOrder } from '@/actions/update-list-order'
+import { updateCardOrder } from '@/actions/update-card-order'
 import { useAction } from '@/hooks/use-action'
 import { ListForm } from './list-form'
 import { ListItem } from './list-item'
-import { updateCardOrder } from '@/actions/update-card-order'
 
 interface ListContainerProps {
   lists: ListWithCards[]
@@ -46,6 +46,7 @@ export default function ListContainer({ lists, boardId }: ListContainerProps) {
 
   const onDragEnd = (result: any) => {
     const { destination, source, type } = result
+    console.log('onDragEnd ~ result:', result);
 
     if (!destination) return
 
@@ -69,13 +70,13 @@ export default function ListContainer({ lists, boardId }: ListContainerProps) {
 
     // Drop if user moves card
     if (type === 'card') {
-      let newOderData = [...orderedData]
+      let newOrderedData = [...orderedData]
 
       // Source and destination list
-      const sourceList = newOderData.find(
+      const sourceList = newOrderedData.find(
         list => list.id === source.droppableId
       )
-      const destList = newOderData.find(
+      const destList = newOrderedData.find(
         list => list.id === destination.droppableId
       )
 
@@ -99,7 +100,7 @@ export default function ListContainer({ lists, boardId }: ListContainerProps) {
 
         sourceList.cards = reorderCards
 
-        setOrderedData(newOderData)
+        setOrderedData(newOrderedData)
         executeUpdateCardOrder({ items: reorderCards, boardId })
       } else {
         // Move card to another list
@@ -120,7 +121,7 @@ export default function ListContainer({ lists, boardId }: ListContainerProps) {
           card.order = index
         })
 
-        setOrderedData(newOderData)
+        setOrderedData(newOrderedData)
         executeUpdateCardOrder({ items: destList.cards, boardId })
       }
     }
@@ -133,7 +134,7 @@ export default function ListContainer({ lists, boardId }: ListContainerProps) {
           <ol
             ref={provided.innerRef}
             {...provided.droppableProps}
-            className='flex gap-x-3 h-full'
+            className='flex gap-x-3 h-full scrollbar-thin'
           >
             {orderedData.map((list, index) => (
               <ListItem key={list.id} index={index} list={list} />

@@ -54,7 +54,7 @@ export function ListItem({ index, list }: ListItemProps) {
                   ref={provided.innerRef}
                   {...provided.droppableProps}
                   className={cn(
-                    'py-0.5 px-1 flex flex-col gap-y-2 max-h-[calc(100vh-350px)] overflow-y-auto',
+                    'py-0.5 px-1 flex flex-col gap-y-2 max-h-[calc(100vh-350px)] overflow-y-auto scrollbar-thin',
                     list.cards.length > 0 ? 'mt-2' : 'mt-0'
                   )}
                 >

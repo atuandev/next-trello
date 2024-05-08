@@ -80,7 +80,7 @@ export const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(
         <form
           ref={formRef}
           action={onSubmit}
-          className='mt-2 py-0.5 px-1 space-y-4'
+          className='mt-2 py-0.5 px-1 space-y-2'
         >
           <FormTextarea
             id='title'
