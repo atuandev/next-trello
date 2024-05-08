@@ -67,7 +67,6 @@ BoardList.Skeleton = function BoardListSkeleton() {
       <Skeleton className='aspect-video size-full p-2' />
       <Skeleton className='aspect-video size-full p-2' />
       <Skeleton className='aspect-video size-full p-2' />
-      <Skeleton className='aspect-video size-full p-2' />
     </div>
   )
 }
