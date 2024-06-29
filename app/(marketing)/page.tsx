@@ -1,9 +1,10 @@
-import { Button } from '@/components/ui/button'
 import { Medal } from 'lucide-react'
-import Link from 'next/link'
-import localFont from 'next/font/local'
-import { cn } from '@/lib/utils'
 import { Poppins } from 'next/font/google'
+import localFont from 'next/font/local'
+import Link from 'next/link'
+
+import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
 const headingFont = localFont({
   src: '../../public/fonts/font.woff2'

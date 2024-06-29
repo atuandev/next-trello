@@ -22,10 +22,13 @@ export default authMiddleware({
       return redirectToSignIn({ returnBackUrl: req.url})
     }
 
-    if (auth.userId && !auth.orgId && req.url !== '/select-org') {
-      const orgSelection = new URL('/select-org', req.url)
-      return NextResponse.redirect(orgSelection)
-    }
+    // if user is signed in and is not have orgId
+    // if (auth.userId && !auth.orgId) {
+    //   console.log(auth.userId)
+    //   console.log(auth.orgId)
+    //   const orgSelection = new URL('/select-org', req.url)
+    //   return NextResponse.redirect(orgSelection)
+    // }
   }
 })
 
